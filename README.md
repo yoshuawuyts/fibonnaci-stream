@@ -13,6 +13,9 @@ $ cargo add fibonnaci-stream
 - [documentation][8]
 - [crate][2]
 
+## Further Reading
+- https://dev.to/mindflavor/rust-futures-an-uneducated-short-and-hopefully-not-boring-tutorial---part-5---streams-5i8
+
 ## License
 [Apache-2.0](./LICENSE)
 
