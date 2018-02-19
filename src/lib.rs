@@ -37,7 +37,7 @@ use std::error::Error;
 /// extern crate futures;
 ///
 /// use futures::{Async, Stream}; // Stream must be in scope here for trait to work
-/// use fibonnaci_stream::Stream as FibStream;
+/// use fibonnaci_stream::FibStream;
 ///
 /// fn main () {
 ///   let mut stream = FibStream::new();
