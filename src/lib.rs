@@ -9,27 +9,25 @@
 //! use fibonnaci_stream::{FibError, Stream};
 //!
 //! fn main () {
-//!   let stream = Stream::new();
-//!   stream.for_each(|num| {
-//!     println!("New number is {}", num);
-//!   })
+//!   let mut stream = FibStream::new();
+//!   stream.poll().and_then(|val| {
+//!     assert_eq!(val, Async::Ready(Some(1)));
+//!
+//!     stream.poll().and_then(|val| {
+//!       assert_eq!(val, Async::Ready(Some(2)));
+//!       Ok(())
+//!     });
+//!
+//!     Ok(())
+//!   });
 //! }
 //! ```
 
-extern crate failure;
-#[macro_use]
-extern crate failure_derive;
 extern crate futures;
 
-pub use futures::{Async, Future, Poll, Stream};
-
-/// Possible types of errors for the Fibonnaci stream.
-#[derive(Debug, Fail)]
-pub enum FibError {
-  /// Placeholder error. Here, just in case.
-  #[fail(display = "something went wrong")]
-  Placeholder { name: String },
-}
+pub use futures::Stream;
+use futures::{Async, Future, Poll};
+use std::error::Error;
 
 /// A lazily evaluated [futures stream] of Fibonnaci numbers.
 ///
@@ -72,12 +70,24 @@ impl FibStream {
 
 impl Stream for FibStream {
   type Item = u64;
-  type Error = FibError;
+  type Error = Box<Error>;
 
-  fn poll(&mut self) -> Poll<Option<u64>, FibError> {
+  fn poll(&mut self) -> Poll<Option<Self::Item>, Self::Error> {
     let res = self.prev + self.num;
     self.prev = self.num;
     self.num = res;
     Ok(Async::Ready(Some(res)))
+  }
+}
+
+impl Future for FibStream {
+  type Item = u64;
+  type Error = Box<Error>;
+
+  fn poll(&mut self) -> Result<Async<u64>, Box<Error>> {
+    let res = self.prev + self.num;
+    self.prev = self.num;
+    self.num = res;
+    Ok(Async::Ready(res))
   }
 }
