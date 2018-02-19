@@ -1,0 +1,9 @@
+[package]
+name = "fibonnaci-stream"
+version = "0.1.0"
+authors = ["Yoshua Wuyts <yoshuawuyts@gmail.com>"]
+
+[dependencies]
+futures = "0.1.18"
+failure = "0.1.1"
+failure_derive = "0.1.1"
