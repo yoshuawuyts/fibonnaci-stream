@@ -22,8 +22,8 @@ $ cargo add fibonnaci-stream
 [1]: https://img.shields.io/crates/v/fibonnaci-stream.svg?style=flat-square
 [2]: https://crates.io/crate/fibonnaci-stream
 [3]: https://img.shields.io/travis/yoshuawuyts/fibonnaci-stream.svg?style=flat-square
-[4]: https://travis-ci.org/choojs/yoshuawuyts/fibonnaci-stream
+[4]: https://travis-ci.org/yoshuawuyts/fibonnaci-stream
 [5]: https://img.shields.io/crates/d/fibonnaci-stream.svg?style=flat-square
-[6]: https://crates.io/crate/fibonnaci-stream
+[6]: https://crates.io/crates/fibonnaci-stream
 [7]: https://docs.rs/fibonnaci-stream/badge.svg?version=0.1.0
-[8]: https://docs.rs/crate/fibonnaci-stream
+[8]: https://docs.rs/fibonnaci-stream
